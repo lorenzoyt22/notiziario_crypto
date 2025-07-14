@@ -33,13 +33,10 @@ async def scheduler(app):
 async def main():
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
     app.add_handler(CommandHandler("notizie", cmd_notizie))
-    # Avvia scheduler senza bloccare run_polling
     asyncio.create_task(scheduler(app))
     print("[BOT] Avvio bot Telegram...")
-    await app.run_polling(close_loop=False)  # <-- qui la modifica
+    await app.run_polling()
 
 if __name__ == "__main__":
-    # Usa direttamente il loop esistente senza creare/chiudere
-    loop = asyncio.get_event_loop()
-    loop.create_task(main())
-    loop.run_forever()
+    # Usa asyncio.run() — lascia che gestisca il loop internamente
+    asyncio.run(main())
