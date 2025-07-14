@@ -36,7 +36,7 @@ async def main():
     # Avvia scheduler senza bloccare run_polling
     asyncio.create_task(scheduler(app))
     print("[BOT] Avvio bot Telegram...")
-    await app.run_polling()
+    await app.run_polling(close_loop=False)  # <-- qui la modifica
 
 if __name__ == "__main__":
     # Usa direttamente il loop esistente senza creare/chiudere
