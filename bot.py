@@ -1,5 +1,5 @@
 import asyncio
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import ApplicationBuilder, CommandHandler
 from datetime import datetime, time as dt_time, timedelta, timezone
 from rss_feeds import fetch_entries, filter_entries, build_message
 from config import TELEGRAM_TOKEN, CHAT_IDS, SCHEDULE_TIME
@@ -33,14 +33,13 @@ async def scheduler(app):
 async def main():
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
     app.add_handler(CommandHandler("notizie", cmd_notizie))
-    # Avvia il task scheduler in background
+    # Avvia scheduler senza bloccare run_polling
     asyncio.create_task(scheduler(app))
     print("[BOT] Avvio bot Telegram...")
     await app.run_polling()
 
-# Entry point usato da Railway, senza asyncio.run()
 if __name__ == "__main__":
-    # Avvia il main senza asyncio.run (evita RuntimeError in Railway)
+    # Usa direttamente il loop esistente senza creare/chiudere
     loop = asyncio.get_event_loop()
     loop.create_task(main())
     loop.run_forever()
