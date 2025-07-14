@@ -6,9 +6,11 @@ SCHEDULE_TIME = "07:00"
 
 RSS_FEEDS = {
     "CoinDesk": "https://www.coindesk.com/arc/outboundfeeds/rss/",
-    "The Block": "https://www.theblock.co/latest-crypto-news?format=rss",
+    "The Block": "https://www.theblockcrypto.com/rss",
     "Decrypt": "https://decrypt.co/feed"
 }
 
-MACRO_KEYWORDS = ["Fed", "FOMC", "dollar", "Trump", "dazi", "Cina", "Europa", "UE"]
-CRYPTO_KEYWORDS = ["crypto", "bitcoin", "ethereum", "SEC", "ETF", "blockchain"]
+MACRO_KEYWORDS = ["fed", "fomc", "congress", "trump", "dazi", "tariff", "inflazione", "bce", "ue", "eurozona"]
+
+CRYPTO_KEYWORDS = ["crypto", "bitcoin", "ethereum", "eth", "blockchain", "altcoin", "defi", "nft", "bitcoin fork"]
+
