@@ -3,7 +3,7 @@ import os
 import requests
 from telegram import Bot
 from config import TELEGRAM_TOKEN, CHAT_IDS
-from rss_feeds import fetch_entries, filter_entries, build_message
+from rss_feeds.py import fetch_entries, filter_entries, build_message
 
 app = Flask(__name__)
 bot = Bot(token=TELEGRAM_TOKEN)
