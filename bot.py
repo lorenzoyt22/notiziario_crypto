@@ -10,7 +10,7 @@ async def send_updates(bot):
     msg = build_message(macro, crypto)
     for chat_id in CHAT_IDS:
         try:
-            await bot.send_message(chat_id=chat_id, text=msg, parse_mode='Markdown')
+            await bot.send_message(chat_id=int(chat_id), text=msg, parse_mode='Markdown')
         except Exception as e:
             print(f"❌ Errore invio a {chat_id}: {e}")
 
